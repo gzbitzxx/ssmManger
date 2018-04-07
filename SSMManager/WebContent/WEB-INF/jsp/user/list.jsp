@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			.querySelector('table[grid-manager="demo-ajaxPageCode"]');
     	table
     			.GM({
-    				ajax_url : 'http://www.lovejavascript.com/learnLinkManager/getLearnLinkList',
+    				ajax_url : 'user/list',
     				ajax_type : 'POST',
     				query : {
     					pluginId : 1,
@@ -72,5 +72,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <div style="clear: both;"></div>
     <table grid-manager="demo-ajaxPageCode"></table>
+    <!-- 添加、修改框 -->
+      <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加用戶</h4>
+                </div>
+                <form id="data">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group" lang="name">
+                                <label for="exampleInputName2">姓名：</label>
+                                <input type="text" class="form-control" name="username" id="exampleInputName2" placeholder="姓名">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group" lang="no">
+                                <label for="exampleInputName2">密码：</label>
+                                <input type="password" class="form-control" name="password" id="exampleInputName2" placeholder="学号">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group" lang="class">
+                                <label for="exampleInputName2">确认密码：</label>
+                                <input type="password" class="form-control" id="exampleInputName2" placeholder="班级">
+                            </div>
+                        </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="add">保存</button>
+                </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div>
+    </div>
+    <script type="text/javascript">
+    $("#add").click(function() {
+		$.ajax({
+			url:"user/regist",
+			type:"POST",
+			data:$("#data").serialize(),
+			success:function(data){
+				console.log(data);
+			}
+		});
+	});
+    </script>
 </body>
 </html>
