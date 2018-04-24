@@ -4,8 +4,8 @@ public class Pagination {
 	private int pSize=10;
 	private int cPage=1;
 	private String keyword;
-	private int skipNum;// 当前第几条记录开始
-	private int takeNum;// 从开始记录开始每页显示条数
+	private int skipNum=1;// 当前第几条记录开始
+	private int takeNum=10;// 从开始记录开始每页显示条数
 
 	private int count;
 	private int pageCount;

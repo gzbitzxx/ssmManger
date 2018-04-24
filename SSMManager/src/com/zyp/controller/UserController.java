@@ -1,5 +1,6 @@
 package com.zyp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.zyp.pojo.User;
 import com.zyp.service.UserService;
@@ -21,8 +23,14 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping("/toList")
-	public String toList() {
-		return "jsp/user/list";
+	public ModelAndView toList() {
+		Pagination pagination=new Pagination();
+		String user=userService.userlist(pagination);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject(user);
+		System.out.println(user);
+		mv.setViewName("jsp/user/list");
+		return mv;
 	}
 	@RequestMapping("/list")
 	@ResponseBody

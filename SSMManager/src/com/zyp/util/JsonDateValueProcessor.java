@@ -29,13 +29,11 @@ public class JsonDateValueProcessor implements JsonValueProcessor {
 		return sdf.format(arg0);
 	}
 
-	@Override
 	public Object processArrayValue(Object value, JsonConfig jsonConfig) {
 		// TODO Auto-generated method stub
 		return process(value);
 	}
 
-	@Override
 	public Object processObjectValue(String key, Object value,
 			JsonConfig jsonConfig) {
 		if (value instanceof java.util.Date) {

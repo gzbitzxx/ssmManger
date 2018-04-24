@@ -20,7 +20,6 @@ public class UserServiceImpl implements UserService {
 		userMapper.insertUser(user);
 	}
 
-	@Override
 	public String userlist(Pagination pagination) {
 		List<User> users=userMapper.userlist(pagination);
 		pagination.setCount(userMapper.usercount());
