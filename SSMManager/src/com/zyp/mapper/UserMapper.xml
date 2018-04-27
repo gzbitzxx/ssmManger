@@ -2,19 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zyp.mapper.UserMapper">
+	<select id="userList" parameterType="com.zyp.util.Pagination"
+		resultType="user">
+		SELECT
+		id,number,username,`password`,`name`,denger,idcard,address,phonenumber
+		from `user` LIMIT #{skipNum},#{takeNum}
+	</select>
+	
+	<select id="userCount" parameterType="com.zyp.util.Pagination"
+		resultType="int">
+		SELECT COUNT(*) from `user` LIMIT #{skipNum},#{takeNum}
+	</select>
+
 	<insert id="insertUser" parameterType="user">
 		<selectKey resultType="String" keyProperty="id" order="BEFORE">
 			select replace(uuid(),'-','') from dual
 		</selectKey>
-		INSERT into `user`(id,username,password)
-		VALUES(#{id},#{username},#{password})
+		INSERT INTO
+		`user`(id,number,username,`password`,`name`,denger,idcard,address,phonenumber)
+		VALUES(#{id},#{number},#{username},#{password},#{name},#{denger},#{idcard},#{address},#{phonenumber})
 	</insert>
-	<select id="userlist" parameterType="com.zyp.util.Pagination" resultType="user">
-		SELECT * FROM `user` u
-		limit #{skipNum},#{takeNum}
-	</select>
-	<select id="usercount" parameterType="com.zyp.util.Pagination" resultType="int">
-		SELECT count(1) FROM `user` u
-		limit #{skipNum},#{takeNum}
-	</select>
 </mapper>

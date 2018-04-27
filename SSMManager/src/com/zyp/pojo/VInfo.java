@@ -14,7 +14,7 @@ public class VInfo {
    
    private String vlicense ; //行驶证编号
    
-   private String vnumber ; //车牌
+   private String vnumber ; //车辆编号
    
    private String model ; //车型
    

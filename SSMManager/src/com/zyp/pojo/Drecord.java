@@ -1,12 +1,14 @@
 package com.zyp.pojo;
 
 import java.util.Date;
+
+import com.zyp.util.Pagination;
 /**
  * 
  * @author zyp
  *  行车记录表
  */
-public class DRecord {
+public class Drecord {
    private String id ; //编号
    
    private String vnumber ; //车辆编号
@@ -79,6 +81,8 @@ public Date getEndtime() {
 public void setEndtime(Date endtime) {
 	this.endtime = endtime;
 }
+
+
 
    
 }

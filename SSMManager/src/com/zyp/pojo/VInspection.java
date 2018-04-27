@@ -6,12 +6,12 @@ import java.util.Date;
  * @author zyp
  *年审表
  */
-public class VInpection {
+public class VInspection {
  private String id ; //编号
  
  private String Ytype ; //年审类型
  
- private String vnumber ; //车牌号
+ private String vnumber ; //车辆编号
  
  private Date carefutime; //年审时间
  

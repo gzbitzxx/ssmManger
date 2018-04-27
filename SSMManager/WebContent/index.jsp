@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="shortcut icon" href="resource/favicon.ico" />
+<title>电力研究院车辆管理系统</title>
 </head>
 <body>
-7gyijokl
+	TEST Program Start !
 </body>
 </html>

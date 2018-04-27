@@ -5,7 +5,7 @@ package com.zyp.pojo;
  * 用户表
  */
 public class User {
-    private int id ; //编号
+    private String id ; //编号
     
     private String number ; //职工编号
     
@@ -23,11 +23,11 @@ public class User {
     
     private String phonenumber ; //电话号码
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

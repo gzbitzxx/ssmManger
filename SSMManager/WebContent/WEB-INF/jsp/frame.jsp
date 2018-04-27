@@ -9,14 +9,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'frame.jsp' starting page</title>
-    
+    <link rel="shortcut icon" href="resource/favicon.ico" />
+	<title>电力研究院车辆管理系统</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<link rel="shortcut icon" href="favicon.ico">
     <link href="resource/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
     <link href="resource/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
     <link href="resource/css/animate.min.css" rel="stylesheet">
@@ -67,10 +66,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<a class="J_menuItem" href="user/toList">用户列表</a>
 							</li>
 							<li>
-								<a class="J_menuItem" href="address/toAddressList">字典列表</a>
+								<a class="J_menuItem" href="driver/toList">驾驶员列表</a>
 							</li>
 							<li>
-								<a class="J_menuItem" href="type/toType">车辆列表</a>
+								<a class="J_menuItem" href="vinfo/toList">车辆信息列表</a>
+							</li>
+							<li>
+								<a class="J_menuItem" href="drecord/toList">行车记录列表</a>
+							</li>
+							<li>
+								<a class="J_menuItem" href="vmaintenance/toList">维修记录列表</a>
+							</li>
+							<li>
+								<a class="J_menuItem" href="vinspection/toList">年审列表</a>
+							</li>
+							<li>
+								<a class="J_menuItem" href="oil/toList">油量列表</a>
+							</li>
+							<li>
+								<a class="J_menuItem" href="dictionaries/toList">字典列表</a>
 							</li>
 						</ul>
 					</li>
@@ -117,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="common/toDataServer" frameborder="0" data-id="index_v1.html" seamless></iframe>
             </div>
             <div class="footer">
-                <div class="pull-right">&copy; 2017-2018 大学生助学贷款网
+                <div class="pull-right">&copy; 2017-2018 电力研究院车辆管理系统
                 </div>
             </div>
         </div>

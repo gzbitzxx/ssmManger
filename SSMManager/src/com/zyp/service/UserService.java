@@ -1,11 +1,20 @@
 package com.zyp.service;
 
-import java.util.List;
+
 
 import com.zyp.pojo.User;
 import com.zyp.util.Pagination;
 
+/**
+ * 用户 server
+ * @author zyp
+ * 定义操作用户的接口
+ */
 public interface UserService {
-	public void insertUser(User user);
-	public String userlist(Pagination pagination);
+	
+	//添加用户
+	public void addUser(User user);
+	
+	//分页获取用户
+	public String userList(Pagination pagination);
 }

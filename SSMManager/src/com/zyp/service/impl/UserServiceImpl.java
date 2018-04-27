@@ -16,15 +16,17 @@ public class UserServiceImpl implements UserService {
 	@Qualifier("userMapper")
 	private UserMapper userMapper;
 
-	public void insertUser(User user) {
+	public void addUser(User user) {
 		userMapper.insertUser(user);
+		
 	}
 
-	public String userlist(Pagination pagination) {
-		List<User> users=userMapper.userlist(pagination);
-		pagination.setCount(userMapper.usercount());
+	public String userList(Pagination pagination) {
+		List<User> users=userMapper.userList(pagination);
+		pagination.setCount(userMapper.userCount(pagination));
 		Util<User> util=new Util<User>();
 		return util.SplitPage(users, pagination.getCount());
 	}
 
+	
 }

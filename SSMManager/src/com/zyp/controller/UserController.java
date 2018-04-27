@@ -1,6 +1,7 @@
 package com.zyp.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.zyp.pojo.User;
 import com.zyp.service.UserService;
+import com.zyp.util.CreateNumber;
 import com.zyp.util.Pagination;
 import com.zyp.util.SecurityUtil;
-
+/**
+ * 用户 Controller
+ * @author zyp
+ * 负责转发和相应 user 的操作
+ */
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -22,31 +28,38 @@ public class UserController {
 	@Qualifier("userService")
 	private UserService userService;
 
+	/**
+	 * 返回用户数据
+	 * @return
+	 */
 	@RequestMapping("/toList")
-	public ModelAndView toList() {
-		Pagination pagination=new Pagination();
-		String user=userService.userlist(pagination);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject(user);
-		System.out.println(user);
-		mv.setViewName("jsp/user/list");
-		return mv;
+	public String toList() {
+		return "jsp/user/list";
 	}
+	
+	/**
+	 * 返回用户数据
+	 * @param pagination
+	 * @return data
+	 */
 	@RequestMapping("/list")
 	@ResponseBody
 	public String list(Pagination pagination){
-		System.out.println(pagination);
-		System.out.println("-------------------------------");
-		String data=userService.userlist(pagination);
-		System.out.println(data);
+		String data=userService.userList(pagination);
 		return data;
 	}
+	
+	/**
+	 * 注册用户
+	 * @param user
+	 * @return 状态
+	 */
 	@RequestMapping("/regist")
 	@ResponseBody
 	public String regist(User user) {
 		user.setPassword(SecurityUtil.strToMD5(user.getPassword()));
-		//userService.insertUser(user);
-		System.out.println(user.getPassword()+"------------------------");
+		user.setNumber(CreateNumber.generateRandomStr(8));
+		userService.addUser(user);
 		return "ok";
 	}
 }

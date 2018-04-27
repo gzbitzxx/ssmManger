@@ -9,8 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'data_server.jsp' starting page</title>
-    
+    <link rel="shortcut icon" href="resource/favicon.ico" />
+	<title>电力研究院车辆管理系统</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
