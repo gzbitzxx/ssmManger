@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.zyp.pojo.User;
 import com.zyp.service.UserService;
-import com.zyp.util.CreateNumber;
 import com.zyp.util.Pagination;
 import com.zyp.util.SecurityUtil;
 /**
@@ -58,7 +57,6 @@ public class UserController {
 	@ResponseBody
 	public String regist(User user) {
 		user.setPassword(SecurityUtil.strToMD5(user.getPassword()));
-		user.setNumber(CreateNumber.generateRandomStr(8));
 		userService.addUser(user);
 		return "ok";
 	}
