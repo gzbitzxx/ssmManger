@@ -22,4 +22,9 @@
 		`user`(id,number,username,`password`,`name`,denger,idcard,address,phonenumber)
 		VALUES(#{id},#{number},#{username},#{password},#{name},#{denger},#{idcard},#{address},#{phonenumber})
 	</insert>
+	
+	<delete id="deleteUser" parameterType="com.zyp.pojo.User">
+		DELETE FROM `user` WHERE id=#{id}
+	</delete>
+	
 </mapper>

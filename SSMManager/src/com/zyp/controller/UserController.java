@@ -62,4 +62,18 @@ public class UserController {
 		userService.addUser(user);
 		return "ok";
 	}
+	
+	/**
+	 * 删除
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/detele")
+	@ResponseBody
+	public String delete(User user){
+		System.out.println("-----------------------------------------------------");
+		System.out.println(user.getId());
+		userService.deleteUser(user);
+		return "ok";
+	}
 }

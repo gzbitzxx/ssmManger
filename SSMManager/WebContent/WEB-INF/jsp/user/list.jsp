@@ -69,7 +69,8 @@
 			    width: '100px',
 			    text: '操作',
 			    template: function(action, rowObject){
-				    return '<a style="color:#337ab7;" href="javascript:;" onclick="deleteInfo(\''+rowObject.id+'\')">编辑</a>';
+				    return '<a style="color:#337ab7;" href="javascript:;" onclick="deleteInfo(\''+rowObject.id+'\')">删除</a>'+"| "
+				    +'<a style="color:#337ab7;" href="javascript:;" onclick="deleteInfo(\''+rowObject.id+'\')">编辑</a>';
 			    }
 	        }]
 	        
@@ -196,7 +197,30 @@
 		});
 		
 		function deleteInfo(ob){
-			alert(ob);
+			layer.confirm("确认要删除吗，删除后不能恢复", { title: "删除确认" }, function (index) {  
+                layer.close(index);  
+                $.post("/admin/customer/DeleteCustomer", { gid: $(e.currentTarget).data("gid") }, function (data) {  
+                    layer.alert(data, {  
+                        title: "删除操作",  
+                        btn: ['确定']  
+                    },  
+                        function (index, item) {  
+                            //layer.close(index);  
+                            location.reload();  
+                        });  
+                });  
+            });   
+			$.ajax({
+				url:"user/detele",
+				type:"POST",
+				data:{'id':ob},
+				success:function(data){
+					console.log(data);
+					if(data=='ok'){
+						
+					}
+				}
+			});
 		}
 		
 		
