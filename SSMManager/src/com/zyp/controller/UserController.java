@@ -69,9 +69,18 @@ public class UserController {
 	@RequestMapping("/detele")
 	@ResponseBody
 	public String delete(User user){
-		System.out.println("-----------------------------------------------------");
-		System.out.println(user.getId());
 		userService.deleteUser(user);
 		return "ok";
+	}
+	@RequestMapping("/findUserById")
+	@ResponseBody
+	public String findUserById(String id) {
+		return userService.fingUserById(id);
+	}
+	@RequestMapping("/update")
+	@ResponseBody
+	public String updateUser(User user) {
+	userService.updateUser(user);
+		return "";
 	}
 }

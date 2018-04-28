@@ -20,4 +20,15 @@ public interface UserService {
 	
 	//删除
 	public void deleteUser(User user);
+	/**
+	 * 根据Id查询用户信息
+	 * @param id 
+	 * @return 用户信息
+	 */
+	public String fingUserById(String id);
+	/**
+	 * 根据id修改用户信息
+	 * @param user 用户信息
+	 */
+	public void updateUser(User user);
 }

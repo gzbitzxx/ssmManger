@@ -2,15 +2,18 @@ package com.zyp.service.impl;
 
 import java.util.List;
 
+import net.sf.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zyp.mapper.UserMapper;
 import com.zyp.pojo.User;
 import com.zyp.service.UserService;
 import com.zyp.util.Pagination;
 import com.zyp.util.Util;
-
+@Transactional
 public class UserServiceImpl implements UserService {
 	@Autowired
 	@Qualifier("userMapper")
@@ -30,6 +33,18 @@ public class UserServiceImpl implements UserService {
 
 	public void deleteUser(User user) {
 		userMapper.deleteUser(user);
+	}
+
+	public String fingUserById(String id) {
+		// TODO Auto-generated method stub
+		User user=userMapper.fingUserById(id);
+		JSONObject jsonObject=JSONObject.fromObject(user);
+		return jsonObject.toString();
+	}
+
+	public void updateUser(User user) {
+		userMapper.updateUser(user);
+		
 	}
 
 	

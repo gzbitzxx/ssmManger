@@ -15,7 +15,7 @@ public interface UserMapper {
 	 * 插入用户
 	 * @param user
 	 */
-	public boolean insertUser(User user);
+	public void insertUser(User user);
 	
 	/**
 	 * 获取用户列表
@@ -37,4 +37,15 @@ public interface UserMapper {
 	 * @return
 	 */
 	public void deleteUser(User user);
+	/**
+	 * 根据Id查询用户信息
+	 * @param id 
+	 * @return 用户信息
+	 */
+	public User fingUserById(String id);
+	/**
+	 * 根据id修改用户信息
+	 * @param user 用户信息
+	 */
+	public void updateUser(User user);
 }
