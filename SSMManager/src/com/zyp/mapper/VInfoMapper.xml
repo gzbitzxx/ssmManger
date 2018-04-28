@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyp.mapper.VInfoMapper">
+	<select id="vinfoList" parameterType="com.zyp.util.Pagination"
+		resultType="vinfo">
+		SELECT
+		id,carowner,vlicense,vnumber,model,color,engine,pcapacity,createtime,displacement,quality
+		from vinfo LIMIT #{skipNum},#{takeNum}
+	</select>
+	
+	<select id="vinfoCount" parameterType="com.zyp.util.Pagination"
+		resultType="int">
+		SELECT COUNT(*) from vinfo LIMIT #{skipNum},#{takeNum}
+	</select>
+
+	<insert id="insertVInfo" parameterType="vinfo">
+		<selectKey resultType="String" keyProperty="id" order="BEFORE">
+			select replace(uuid(),'-','') from dual
+		</selectKey>
+		INSERT INTO
+		vinfo (id,carowner,vlicense,vnumber,model,color,engine,pcapacity,createtime,displacement,quality)
+		VALUES (#{id},#{carowner},#{vlicense},#{vnumber},#{model},#{color},#{engine},#{pcapacity},#{createtime},#{displacement},#{quality})
+	</insert>
+	<delete id="deleteVInfo" parameterType="com.zyp.pojo.VInfo">
+		DELETE FROM vinfo WHERE id=#{id}
+	</delete>
+</mapper>

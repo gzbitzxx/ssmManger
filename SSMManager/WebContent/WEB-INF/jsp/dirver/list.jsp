@@ -31,7 +31,7 @@
 		var table = document
 				.querySelector('table[grid-manager="demo-ajaxPageCode"]');
 		table.GM({
-			ajax_url : 'user/list',
+			ajax_url : 'driver/list',
 			ajax_type : 'POST',
 			query : {
 				pluginId : 1,
@@ -41,16 +41,10 @@
 			supportCheckbox : false,
 			columnData : [ {
 				key : 'number',
-				text : '用户名'
-			}, {
-				key : 'username',
-				text : '登录名'
+				text : '驾驶证编号'
 			}, {
 				key : 'name',
 				text : '用户名'
-			}, {
-				key : 'password',
-				text : '密码'
 			}, {
 				key : 'phonenumber',
 				text : '联系电话'
@@ -69,8 +63,7 @@
 			    width: '100px',
 			    text: '操作',
 			    template: function(action, rowObject){
-				    return '<a style="color:#337ab7;" href="javascript:;" onclick="deleteInfo(\''+rowObject.id+'\')">删除</a>'+"| "
-				    +'<a style="color:#337ab7;" href="javascript:;" onclick="deleteInfo(\''+rowObject.id+'\')">编辑</a>';
+				    return "\<a style='color:#337ab7;' href='javascript:;' onclick='deleteInfo("+"'"+rowObject.id+"'"+")' \>删除\</a\>";
 			    }
 	        }]
 	        
@@ -81,7 +74,7 @@
 <body style="margin: 20px">
 	<div class="row">
 		<div class="col-md-10">
-			<h3>用户列表</h3>
+			<h3>驾驶员列表</h3>
 		</div>
 		<div class="col-md-1">
 			<div class="form-group">
@@ -113,16 +106,16 @@
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">添加用戶</h4>
+					<h4 class="modal-title">添加驾驶员</h4>
 				</div>
 				<form id="data">
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<div class="form-group" lang="username">
-									<label for="username">登录名：</label> <input type="text"
-										class="form-control" name="username" id="username"
-										placeholder="登录名">
+								<div class="form-group" lang="number">
+									<label for="number">驾驶员编号：</label> <input type="text"
+										class="form-control" name="number" id="number"
+										placeholder="驾驶员编号">
 								</div>
 							</div>
 							<div class="col-lg-12">
@@ -140,7 +133,14 @@
 								</div>
 							</div>
 							<div class="col-lg-12">
-								<div class="form-group" lang="name">
+								<div class="form-group" lang="age">
+									<label for="age">年龄：</label> <input type="text"
+										class="form-control" name="age" id="age"
+										placeholder="年龄">
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group" lang="idcard">
 									<label for="idcard">身份证名：</label> <input type="text"
 										class="form-control" name="idcard" id="idcard"
 										placeholder="身份证名">
@@ -161,18 +161,32 @@
 								</div>
 							</div>
 							<div class="col-lg-12">
-								<div class="form-group" lang="no">
-									<label for="password">密码：</label> <input
-										type="password" class="form-control" name="password"
-										id="password" placeholder="密码">
+								<div class="form-group" lang="drivercardid">
+									<label for="drivercardid">驾驶证编号：</label> <input
+										type="text" class="form-control" name="drivercardid"
+										id="drivercardid" placeholder="驾驶证编号">
 								</div>
 							</div>
 							<div class="col-lg-12">
-								<div class="form-group" lang="class">
-									<label for="truepassword">确认密码：</label> <input
-										type="password" class="form-control" id=""truepassword""
-										placeholder="班级">
+								<div class="form-group" lang="driving">
+									<label for="driving">驾龄：</label> <input
+										type="text" class="form-control" name="driving" id=""driving""
+										placeholder="驾龄">
 								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group" lang="starttime">
+									<label for="starttime">驾驶证有效开始时间：</label> <input
+										type="text" class="form-control" name="starttime" id=""starttime""
+										placeholder="驾驶证有效开始时间">
+								</div>	
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group" lang="endtime">
+									<label for="endtime">驾驶证失效时间：</label> <input
+										type="text" class="form-control" name="endtime" id=""endtime""
+										placeholder="驾驶证失效时间">
+								</div>	
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default"
@@ -187,7 +201,7 @@
 	<script type="text/javascript">
 		$("#add").click(function() {
 			$.ajax({
-				url : "user/regist",
+				url : "driver/regist",
 				type : "POST",
 				data : $("#data").serialize(),
 				success : function(data) {
@@ -211,7 +225,7 @@
                 });  
             });   
 			$.ajax({
-				url:"user/detele",
+				url:"driver/detele",
 				type:"POST",
 				data:{'id':ob},
 				success:function(data){

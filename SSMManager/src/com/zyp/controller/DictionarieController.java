@@ -1,66 +1,59 @@
 package com.zyp.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.zyp.pojo.User;
-import com.zyp.service.UserService;
+import com.zyp.pojo.Dictionarie;
+import com.zyp.service.DictionarieService;
+import com.zyp.util.CreateNumber;
 import com.zyp.util.Pagination;
-import com.zyp.util.SecurityUtil;
+
 /**
- * 用户 Controller
+ * 字典 Controller
  * @author zyp
- * 负责转发和相应 user 的操作
+ * 负责转发和相应 dictionarie 的操作
  */
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/dictionarie")
+public class DictionarieController {
 	@Autowired
-	@Qualifier("userService")
-	private UserService userService;
+	private DictionarieService dictionarieService;
 
 	/**
-	 * 返回用户数据
+	 * 返回字典数据
 	 * @return
 	 */
 	@RequestMapping("/toList")
 	public String toList() {
-		return "jsp/user/list";
+		return "jsp/dictionarie/list";
 	}
 	
 	/**
-	 * 返回用户数据
+	 * 返回字典数据
 	 * @param pagination
 	 * @return data
 	 */
 	@RequestMapping("/list")
 	@ResponseBody
 	public String list(Pagination pagination){
-		String data=userService.userList(pagination);
+		String data=dictionarieService.dictionarieList(pagination);
 		return data;
 	}
 	
 	/**
-	 * 注册用户
-	 * @param user
+	 * 注册字典
+	 * @param dictionarie
 	 * @return 状态
 	 */
 	@RequestMapping("/regist")
 	@ResponseBody
-	public String regist(User user) {
-		user.setPassword(SecurityUtil.strToMD5(user.getPassword()));
-		userService.addUser(user);
+	public String regist(Dictionarie dictionarie) {
+		dictionarieService.addDictionarie(dictionarie);
 		return "ok";
 	}
-	
 	/**
 	 * 删除
 	 * @param id
@@ -68,10 +61,10 @@ public class UserController {
 	 */
 	@RequestMapping("/detele")
 	@ResponseBody
-	public String delete(User user){
+	public String delete(Dictionarie dictionarie){
 		System.out.println("-----------------------------------------------------");
-		System.out.println(user.getId());
-		userService.deleteUser(user);
+		System.out.println(dictionarie.getId());
+		dictionarieService.deleteDictionarie(dictionarie);
 		return "ok";
 	}
 }

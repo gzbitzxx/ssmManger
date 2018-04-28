@@ -1,9 +1,5 @@
 package com.zyp.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -11,21 +7,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.zyp.pojo.Driver;
 import com.zyp.pojo.User;
-import com.zyp.service.UserService;
+import com.zyp.service.DriverService;
+import com.zyp.util.CreateNumber;
 import com.zyp.util.Pagination;
 import com.zyp.util.SecurityUtil;
 /**
- * 用户 Controller
+ * 驾驶员 Controller
  * @author zyp
- * 负责转发和相应 user 的操作
+ * 负责转发和相应 驾驶员 的操作
  */
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/driver")
+public class DriverController {
 	@Autowired
-	@Qualifier("userService")
-	private UserService userService;
+	@Qualifier("driverService")
+	private DriverService driverService;
 
 	/**
 	 * 返回用户数据
@@ -33,7 +31,8 @@ public class UserController {
 	 */
 	@RequestMapping("/toList")
 	public String toList() {
-		return "jsp/user/list";
+		
+		return "jsp/dirver/list";
 	}
 	
 	/**
@@ -44,7 +43,8 @@ public class UserController {
 	@RequestMapping("/list")
 	@ResponseBody
 	public String list(Pagination pagination){
-		String data=userService.userList(pagination);
+		String data=driverService.driverList(pagination);
+		System.out.println(data);
 		return data;
 	}
 	
@@ -55,12 +55,11 @@ public class UserController {
 	 */
 	@RequestMapping("/regist")
 	@ResponseBody
-	public String regist(User user) {
-		user.setPassword(SecurityUtil.strToMD5(user.getPassword()));
-		userService.addUser(user);
+	public String regist(Driver driver) {
+		driver.setNumber(CreateNumber.generateRandomStr(8));
+		driverService.addDriver(driver);
 		return "ok";
 	}
-	
 	/**
 	 * 删除
 	 * @param id
@@ -68,10 +67,10 @@ public class UserController {
 	 */
 	@RequestMapping("/detele")
 	@ResponseBody
-	public String delete(User user){
+	public String delete(Driver driver){
 		System.out.println("-----------------------------------------------------");
-		System.out.println(user.getId());
-		userService.deleteUser(user);
+		System.out.println(driver.getId());
+		driverService.deleteDriver(driver);
 		return "ok";
 	}
 }

@@ -17,4 +17,7 @@ public interface UserService {
 	
 	//分页获取用户
 	public String userList(Pagination pagination);
+	
+	//删除
+	public void deleteUser(User user);
 }

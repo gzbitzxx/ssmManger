@@ -1,66 +1,62 @@
 package com.zyp.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.zyp.pojo.User;
-import com.zyp.service.UserService;
+import com.zyp.pojo.VInfo;
+import com.zyp.service.VInfoService;
+import com.zyp.util.CreateNumber;
 import com.zyp.util.Pagination;
-import com.zyp.util.SecurityUtil;
+
 /**
- * 用户 Controller
+ * 车辆 Controller
  * @author zyp
- * 负责转发和相应 user 的操作
+ * 负责转发和相应 vinfo 的操作
  */
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/vinfo ")
+public class VInfoController {
 	@Autowired
-	@Qualifier("userService")
-	private UserService userService;
+	@Qualifier("vinfoService")
+	private VInfoService vinfoService;
 
 	/**
-	 * 返回用户数据
+	 * 返回车辆数据
 	 * @return
 	 */
 	@RequestMapping("/toList")
 	public String toList() {
-		return "jsp/user/list";
+		return "jsp/vinfo/list";
 	}
 	
 	/**
-	 * 返回用户数据
+	 * 返回车辆数据
 	 * @param pagination
 	 * @return data
 	 */
 	@RequestMapping("/list")
 	@ResponseBody
 	public String list(Pagination pagination){
-		String data=userService.userList(pagination);
+		String data=vinfoService.vinfoList(pagination);
 		return data;
 	}
 	
 	/**
-	 * 注册用户
-	 * @param user
+	 * 注册车辆
+	 * @param vinfo
 	 * @return 状态
 	 */
 	@RequestMapping("/regist")
 	@ResponseBody
-	public String regist(User user) {
-		user.setPassword(SecurityUtil.strToMD5(user.getPassword()));
-		userService.addUser(user);
+	public String regist(VInfo vinfo) {
+		vinfo.setVnumber(CreateNumber.generateRandomStr(8));
+		vinfoService.addVInfo(vinfo);
 		return "ok";
 	}
-	
 	/**
 	 * 删除
 	 * @param id
@@ -68,10 +64,10 @@ public class UserController {
 	 */
 	@RequestMapping("/detele")
 	@ResponseBody
-	public String delete(User user){
+	public String delete(VInfo vinfo){
 		System.out.println("-----------------------------------------------------");
-		System.out.println(user.getId());
-		userService.deleteUser(user);
+		System.out.println(vinfo.getId());
+		vinfoService.deleteVInfo(vinfo);
 		return "ok";
 	}
 }

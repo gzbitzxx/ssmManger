@@ -1,66 +1,61 @@
 package com.zyp.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.zyp.pojo.Oil;
 import com.zyp.pojo.User;
-import com.zyp.service.UserService;
+import com.zyp.service.OilService;
+import com.zyp.util.CreateNumber;
 import com.zyp.util.Pagination;
-import com.zyp.util.SecurityUtil;
+
 /**
- * 用户 Controller
+ * 油量 Controller
  * @author zyp
- * 负责转发和相应 user 的操作
+ * 负责转发和相应 oil 的操作
  */
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/oil")
+public class OilController {
 	@Autowired
-	@Qualifier("userService")
-	private UserService userService;
+	private OilService oilService;
 
 	/**
-	 * 返回用户数据
+	 * 返回油量数据
 	 * @return
 	 */
 	@RequestMapping("/toList")
 	public String toList() {
-		return "jsp/user/list";
+		return "jsp/oil/list";
 	}
 	
 	/**
-	 * 返回用户数据
+	 * 返回油量数据
 	 * @param pagination
 	 * @return data
 	 */
 	@RequestMapping("/list")
 	@ResponseBody
 	public String list(Pagination pagination){
-		String data=userService.userList(pagination);
+		String data=oilService.oilList(pagination);
 		return data;
 	}
 	
 	/**
-	 * 注册用户
-	 * @param user
+	 * 注册油量
+	 * @param VInspection
 	 * @return 状态
 	 */
 	@RequestMapping("/regist")
 	@ResponseBody
-	public String regist(User user) {
-		user.setPassword(SecurityUtil.strToMD5(user.getPassword()));
-		userService.addUser(user);
+	public String regist(Oil oil) {
+		oil.setVnumber(CreateNumber.generateRandomStr(8));
+		oilService.addOil(oil);
 		return "ok";
 	}
-	
 	/**
 	 * 删除
 	 * @param id
@@ -68,10 +63,10 @@ public class UserController {
 	 */
 	@RequestMapping("/detele")
 	@ResponseBody
-	public String delete(User user){
+	public String delete(Oil oil){
 		System.out.println("-----------------------------------------------------");
-		System.out.println(user.getId());
-		userService.deleteUser(user);
+		System.out.println(oil.getId());
+		oilService.deleteOil(oil);
 		return "ok";
 	}
 }

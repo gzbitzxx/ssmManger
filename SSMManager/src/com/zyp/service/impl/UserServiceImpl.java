@@ -28,5 +28,9 @@ public class UserServiceImpl implements UserService {
 		return util.SplitPage(users, pagination.getCount());
 	}
 
+	public void deleteUser(User user) {
+		userMapper.deleteUser(user);
+	}
+
 	
 }

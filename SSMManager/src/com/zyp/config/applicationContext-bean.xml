@@ -17,6 +17,6 @@
 	<bean name="vmaintenanceService" class="com.zyp.service.impl.VMaintenanceServiceImpl"/>
 	<bean name="vinspectionService" class="com.zyp.service.impl.VInspectionServiceImpl"/>
 	<bean name="oilService" class="com.zyp.service.impl.OilServiceImpl"/>
-	<!--<bean name="dictionariesService" class="com.zyp.service.impl.DictionariesServiceImpl"/> -->
+	<bean name="dictionarieService" class="com.zyp.service.impl.DictionarieServiceImpl"/>
 	
 </beans>

@@ -30,4 +30,11 @@ public interface UserMapper {
 	 * @return 用户个数
 	 */
 	public int userCount(Pagination pagination);
+	
+	/**
+	 * 删除用户
+	 * @param id
+	 * @return
+	 */
+	public void deleteUser(User user);
 }

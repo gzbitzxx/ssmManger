@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<a class="J_menuItem" href="oil/toList">油量列表</a>
 							</li>
 							<li>
-								<a class="J_menuItem" href="dictionaries/toList">字典列表</a>
+								<a class="J_menuItem" href="dictionarie/toList">字典列表</a>
 							</li>
 						</ul>
 					</li>

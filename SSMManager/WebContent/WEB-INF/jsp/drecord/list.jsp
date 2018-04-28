@@ -31,7 +31,7 @@
 		var table = document
 				.querySelector('table[grid-manager="demo-ajaxPageCode"]');
 		table.GM({
-			ajax_url : 'user/list',
+			ajax_url : 'drecord/list',
 			ajax_type : 'POST',
 			query : {
 				pluginId : 1,
@@ -40,37 +40,36 @@
 			supportAjaxPage : true,
 			supportCheckbox : false,
 			columnData : [ {
-				key : 'number',
-				text : '用户名'
+				key : 'vnumber',
+				text : '车辆编号'
 			}, {
-				key : 'username',
-				text : '登录名'
+				key : 'driverid',
+				text : '驾驶员编号'
 			}, {
-				key : 'name',
-				text : '用户名'
+				key : 'startmileage',
+				text : '起始公里数'
 			}, {
-				key : 'password',
-				text : '密码'
+				key : 'endmileage',
+				text : '结束公里数'
 			}, {
-				key : 'phonenumber',
-				text : '联系电话'
+				key : 'origin',
+				text : '出发地'
 			}, {
-				key : 'denger',
-				text : '性别'
+				key : 'destination',
+				text : '目的地'
 			}, {
-				key : 'idcard',
-				text : '身份证号'
+				key : 'starttime',
+				text : '出发时间'
 			}, {
-				key : 'address',
-				text : '家庭地址'
+				key : 'endtime',
+				text : '结束时间'
 			},{
 			    key: 'action',
 			    remind: 'the action',
 			    width: '100px',
 			    text: '操作',
 			    template: function(action, rowObject){
-				    return '<a style="color:#337ab7;" href="javascript:;" onclick="deleteInfo(\''+rowObject.id+'\')">删除</a>'+"| "
-				    +'<a style="color:#337ab7;" href="javascript:;" onclick="deleteInfo(\''+rowObject.id+'\')">编辑</a>';
+				    return '<a style="color:#337ab7;" href="javascript:;" onclick="deleteInfo(\''+rowObject.id+'\')">编辑</a>';
 			    }
 	        }]
 	        
@@ -81,7 +80,7 @@
 <body style="margin: 20px">
 	<div class="row">
 		<div class="col-md-10">
-			<h3>用户列表</h3>
+			<h3>行车记录列表</h3>
 		</div>
 		<div class="col-md-1">
 			<div class="form-group">
@@ -113,68 +112,73 @@
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">添加用戶</h4>
+					<h4 class="modal-title">添加行车记录</h4>
 				</div>
 				<form id="data">
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<div class="form-group" lang="username">
-									<label for="username">登录名：</label> <input type="text"
-										class="form-control" name="username" id="username"
-										placeholder="登录名">
+								<div class="form-group" lang="vnumber">
+									<label for="vnumber">车辆编号：</label> <input type="text"
+										class="form-control" name="vnumber" id="vnumber"
+										placeholder="车辆编号">
 								</div>
 							</div>
 							<div class="col-lg-12">
-								<div class="form-group" lang="name">
-									<label for="name">姓名：</label> <input type="text"
-										class="form-control" name="name" id="name"
-										placeholder="姓名">
+								<div class="form-group" lang="driverid">
+									<label for="driverid">驾驶员编号：</label> <input type="text"
+										class="form-control" name="driverid" id="driverid"
+										placeholder="驾驶员编号">
 								</div>
 							</div>
 							<div class="col-lg-12">
-								<div class="form-group" lang="denger">
-									<label for="denger">性别：</label> <input type="text"
-										class="form-control" name="denger" id="denger"
-										placeholder="性别">
+								<div class="form-group" lang="startmileage">
+									<label for=startmileage>起始公里数：</label> <input type="text"
+										class="form-control" name="startmileage" id="startmileage"
+										placeholder="起始公里数">
 								</div>
 							</div>
 							<div class="col-lg-12">
-								<div class="form-group" lang="name">
-									<label for="idcard">身份证名：</label> <input type="text"
-										class="form-control" name="idcard" id="idcard"
-										placeholder="身份证名">
+								<div class="form-group" lang="endmileage">
+									<label for="endmileage">结束公里数：</label> <input type="text"
+										class="form-control" name="endmileage" id="endmileage"
+										placeholder="结束公里数">
 								</div>
 							</div>
 							<div class="col-lg-12">
-								<div class="form-group" lang="address">
-									<label for="address">地址：</label> <input type="text"
-										class="form-control" name="address" id="address"
-										placeholder="地址">
+								<div class="form-group" lang="color">
+									<label for="color">车色：</label> <input type="text"
+										class="form-control" name="color" id="color"
+										placeholder="车色">
 								</div>
 							</div>
 							<div class="col-lg-12">
-								<div class="form-group" lang="phonenumber">
-									<label for="phonenumber">电话号码：</label> <input type="text"
-										class="form-control" name="phonenumber" id="phonenumber"
-										placeholder="电话号码">
+								<div class="form-group" lang="engoriginine">
+									<label for="origin">出发地：</label> <input type="text"
+										class="form-control" name="origin" id="origin"
+										placeholder="出发地">
 								</div>
 							</div>
 							<div class="col-lg-12">
-								<div class="form-group" lang="no">
-									<label for="password">密码：</label> <input
-										type="password" class="form-control" name="password"
-										id="password" placeholder="密码">
+								<div class="form-group" lang="destination">
+									<label for="destination">目的地：</label> <input
+										type="text" class="form-control" name="destination"
+										id="destination" placeholder="目的地">
 								</div>
 							</div>
 							<div class="col-lg-12">
-								<div class="form-group" lang="class">
-									<label for="truepassword">确认密码：</label> <input
-										type="password" class="form-control" id=""truepassword""
-										placeholder="班级">
+								<div class="form-group" lang="starttime">
+									<label for="starttime">出发时间：</label> <input
+										type="text" class="form-control" name="starttime" id="starttime"
+										placeholder="出发时间">
 								</div>
-							</div>
-							<div class="modal-footer">
+						  <div class="col-lg-12">
+							<div class="form-group" lang="endtime">
+								<label for="endtime">结束时间：</label> <input
+									type="text" class="form-control" name="endtime" id="endtime"
+									placeholder="结束时间">
+								</div>  
+			               <div class="modal-footer">
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal">关闭</button>
 								<button type="button" class="btn btn-primary" id="add">保存</button>
@@ -187,7 +191,7 @@
 	<script type="text/javascript">
 		$("#add").click(function() {
 			$.ajax({
-				url : "user/regist",
+				url : "drecord/regist",
 				type : "POST",
 				data : $("#data").serialize(),
 				success : function(data) {
@@ -211,7 +215,7 @@
                 });  
             });   
 			$.ajax({
-				url:"user/detele",
+				url:"drecord/detele",
 				type:"POST",
 				data:{'id':ob},
 				success:function(data){
@@ -222,7 +226,6 @@
 				}
 			});
 		}
-		
 		
 	</script>
 </body>
