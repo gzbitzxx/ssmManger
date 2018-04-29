@@ -37,4 +37,16 @@ public interface VInspectionMapper {
 	 * @return
 	 */
 	public void deleteVInspection(VInspection vinspection);
+	
+	/**
+	 * 根据Id查询年审信息
+	 * @param id 
+	 * @return 年审信息
+	 */
+	public VInspection fingVInspectionById(String id);
+	/**
+	 * 根据id修改年审信息
+	 * @param vinspection 年审信息
+	 */
+	public void updateVInspection(VInspection vinspection);
 }

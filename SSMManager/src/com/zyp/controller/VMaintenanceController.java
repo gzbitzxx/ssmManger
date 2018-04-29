@@ -65,9 +65,22 @@ public class VMaintenanceController {
 	@RequestMapping("/detele")
 	@ResponseBody
 	public String delete(VMaintenance vmaintenance){
-		System.out.println("-----------------------------------------------------");
-		System.out.println(vmaintenance.getId());
 		vmaintenanceService.deleteVMaintenance(vmaintenance);
 		return "ok";
 	}
+	 //通过id获取用户数据
+	@RequestMapping("/findUserById")
+	@ResponseBody
+	public String findVMaintenanceById(String id) {
+		return vmaintenanceService.fingVMaintenanceById(id);
+	}
+	
+	 //通过用户数据跟新数据库
+	@RequestMapping("/update")
+	@ResponseBody
+	public String updateVMaintenance(VMaintenance vmaintenance) {
+	vmaintenanceService.updateVMaintenance(vmaintenance);
+		return "";
+	}
+	
 }

@@ -65,9 +65,23 @@ public class VInfoController {
 	@RequestMapping("/detele")
 	@ResponseBody
 	public String delete(VInfo vinfo){
-		System.out.println("-----------------------------------------------------");
-		System.out.println(vinfo.getId());
 		vinfoService.deleteVInfo(vinfo);
 		return "ok";
 	}
+	
+	 //通过id获取用户数据
+	@RequestMapping("/findVInfoById")
+	@ResponseBody
+	public String findVInfoById(String id) {
+		return vinfoService.fingVInfoById(id);
+	}
+	
+	 //通过用户数据跟新数据库
+	@RequestMapping("/update")
+	@ResponseBody
+	public String updateVInfo(VInfo vinfo) {
+		vinfoService.updateVInfo(vinfo);
+		return "";
+	}
+	
 }

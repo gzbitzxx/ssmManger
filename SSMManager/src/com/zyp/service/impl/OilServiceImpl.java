@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import com.zyp.mapper.OilMapper;
-import com.zyp.pojo.Drecord;
 import com.zyp.pojo.Oil;
 import com.zyp.service.OilService;
 import com.zyp.util.Pagination;
 import com.zyp.util.Util;
+import net.sf.json.JSONObject;
 
 public class OilServiceImpl implements OilService {
 	@Autowired
@@ -28,5 +28,18 @@ public class OilServiceImpl implements OilService {
 	public void deleteOil(Oil oil) {
 		oilMapper.deleteOil(oil);
 	}
+	
+	public String fingOilById(String id) {
+		// TODO Auto-generated method stub
+		Oil oil=oilMapper.fingOilById(id);
+		JSONObject jsonObject=JSONObject.fromObject(oil);
+		return jsonObject.toString();
+	}
+
+	public void updateOil(Oil oil) {
+		oilMapper.updateOil(oil);
+		
+	}
+
 	
 }

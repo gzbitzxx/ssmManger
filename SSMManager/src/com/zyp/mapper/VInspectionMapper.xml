@@ -5,7 +5,7 @@
 	<select id="vinspectionList" parameterType="com.zyp.util.Pagination"
 		resultType="vinspection">
 		SELECT
-		id,Ytype,vnumber,carefutime,pretime,userid,desc
+		id,ytype,vnumber,carefutime,pretime,userid,desc
 		from vinspection LIMIT #{skipNum},#{takeNum}
 	</select>
 	
@@ -19,10 +19,25 @@
 			select replace(uuid(),'-','') from dual
 		</selectKey>
 		INSERT INTO
-		vinspection (id,Ytype,vnumber,carefutime,pretime,userid,desc)
-		VALUES (#{id},#{Ytype},#{vnumber},#{carefutime},#{pretime},#{userid},#{desc})
+		vinspection (id,ytype,vnumber,carefutime,pretime,userid,desc)
+		VALUES (#{id},#{ytype},#{vnumber},#{carefutime},#{pretime},#{userid},#{desc})
 	</insert>
 	<delete id="deleteVInspection" parameterType="com.zyp.pojo.VInspection">
 		DELETE FROM vinspection WHERE id=#{id}
 	</delete>
+	
+	<select id="fingVInspectionById" parameterType="string" resultType="com.zyp.pojo.VInspection">
+	select * from user where id=#{id}
+	</select>
+	
+	<update id="updateVInspection" parameterType="com.zyp.pojo.VInspection">
+	UPDATE vinspection set
+	ytype=#{ytype},
+	vnumber=#{vnumber},
+	carefutime=#{carefutime},
+	pretime=#{pretime},
+	userid=#{userid},
+	desc=#{desc},
+	where id=#{id}
+	</update>
 </mapper>

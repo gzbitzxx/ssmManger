@@ -9,7 +9,7 @@ import java.util.Date;
 public class VInspection {
  private String id ; //编号
  
- private String Ytype ; //年审类型
+ private String ytype ; //年审类型
  
  private String vnumber ; //车辆编号
  
@@ -30,10 +30,10 @@ public void setId(String id) {
 	this.id = id;
 }
 public String getYtype() {
-	return Ytype;
+	return ytype;
 }
 public void setYtype(String ytype) {
-	Ytype = ytype;
+	ytype = ytype;
 }
 public String getVnumber() {
 	return vnumber;

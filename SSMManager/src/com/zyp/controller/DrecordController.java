@@ -27,7 +27,7 @@ public class DrecordController {
 	private DrecordService drecordService;
 
 	/**
-	 * 返回用户数据
+	 * 返回行车记录数据
 	 * @return
 	 */
 	@RequestMapping("/toList")
@@ -67,10 +67,25 @@ public class DrecordController {
 	@RequestMapping("/detele")
 	@ResponseBody
 	public String delete(Drecord drecord){
-		System.out.println("-----------------------------------------------------");
-		System.out.println(drecord.getId());
 		drecordService.deleteDrecord(drecord);
 		return "ok";
 	}
+	
+	   //通过id获取行车记录数据
+
+		@RequestMapping("/findDrecordById")
+		@ResponseBody
+		public String findDrecordById(String id) {
+			return drecordService.fingDrecordById(id);
+		}
+		
+		//通过用户数据跟新数据库
+		@RequestMapping("/update")
+		@ResponseBody
+		public String updateDrecord(Drecord drecord) {
+		drecordService.updateDrecord(drecord);
+			return "";
+		}
+	
 	
 }

@@ -8,9 +8,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import com.zyp.mapper.DriverMapper;
 import com.zyp.pojo.Drecord;
 import com.zyp.pojo.Driver;
+import com.zyp.pojo.User;
 import com.zyp.service.DriverService;
 import com.zyp.util.Pagination;
 import com.zyp.util.Util;
+
+import net.sf.json.JSONObject;
 
 public class DriverServiceImpl implements DriverService {
 	@Autowired
@@ -24,6 +27,7 @@ public class DriverServiceImpl implements DriverService {
 
 	public String driverList(Pagination pagination) {
 		List<Driver> drivers=driverMapper.driverList(pagination);
+		System.out.println(drivers.get(0).getPhonenumber()+"------------------------------------------");
 		pagination.setCount(driverMapper.driverCount(pagination));
 		Util<Driver> util=new Util<Driver>();
 		return util.SplitPage(drivers, pagination.getCount());
@@ -31,5 +35,19 @@ public class DriverServiceImpl implements DriverService {
 	public void deleteDriver(Driver driver) {
 		driverMapper.deleteDriver(driver);
 	}
+	
+	public String fingDriverById(String id) {
+		// TODO Auto-generated method stub
+		Driver driver=driverMapper.fingDriverById(id);
+		JSONObject jsonObject=JSONObject.fromObject(driver);
+		return jsonObject.toString();
+	}
+
+	public void updateDriver(Driver driver) {
+		driverMapper.updateDriver(driver);
+		
+	}
+
+	
 	
 }

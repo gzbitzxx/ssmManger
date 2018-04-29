@@ -27,4 +27,21 @@
 		DELETE FROM drecord WHERE id=#{id}
 	</delete>
 	
+	<select id="fingDrecordById" parameterType="string" resultType="com.zyp.pojo.Drecord">
+	select * from drecord where id=#{id}
+	</select>
+	
+	<update id="updateDrecord" parameterType="com.zyp.pojo.Drecord">
+	UPDATE drecord set
+	vnumber=#{vnumber},
+	driverid=#{driverid},
+	startmileage=#{startmileage},
+	endmileage=#{endmileage},
+	origin=#{origin},
+	destination=#{destination},
+	starttime=#{starttime}
+	endtime=#{endtime},
+	where id=#{id}
+	</update>
+	
 </mapper>

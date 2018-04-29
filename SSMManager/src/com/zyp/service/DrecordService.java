@@ -18,6 +18,20 @@ public interface DrecordService {
 	public String drecordList(Pagination pagination);
 	
 	//删除
-		public void deleteDrecord(Drecord drecord);
+	public void deleteDrecord(Drecord drecord);
+	
+		/**
+		 * 根据Id查询行车记录信息
+		 * @param id 
+		 * @return 行车记录
+		 */
+
+	public String fingDrecordById(String id);
+		/**
+		 * 根据id修改行车记录信息
+		 * @param drecord 行车记录
+		 */
+
+	public void updateDrecord(Drecord drecord);
 		
 }

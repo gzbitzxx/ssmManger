@@ -23,6 +23,21 @@
 		VALUES (#{id},#{driverid},#{pretime},#{nowtime},#{preaoil},#{oil},#{oiltype})
 	</insert>
 	<delete id="deleteOil" parameterType="com.zyp.pojo.Oil">
-		DELETE FROM Oil WHERE id=#{id}
+		DELETE FROM oil WHERE id=#{id}
 	</delete>
+	
+	<select id="fingOilById" parameterType="string" resultType="com.zyp.pojo.Oil">
+	select * from oil where id=#{id}
+	</select>
+	
+	<update id="updateOil" parameterType="com.zyp.pojo.Oil">
+	UPDATE oil set
+	driverid=#{driverid},
+	pretime=#{pretime},
+	nowtime=#{nowtime},
+	preaoil=#{preaoil},
+	oil=#{oil},
+	oiltype=#{oiltype},
+	where id=#{id}
+	</update>
 </mapper>

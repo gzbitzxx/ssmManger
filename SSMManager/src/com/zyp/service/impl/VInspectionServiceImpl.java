@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.zyp.mapper.VInspectionMapper;
 import com.zyp.pojo.Drecord;
+import com.zyp.pojo.User;
 import com.zyp.pojo.VInspection;
 import com.zyp.service.VInspectionService;
 import com.zyp.util.Pagination;
 import com.zyp.util.Util;
+
+import net.sf.json.JSONObject;
 
 public class VInspectionServiceImpl implements VInspectionService {
 	@Autowired
@@ -31,4 +34,18 @@ public class VInspectionServiceImpl implements VInspectionService {
 	public void deleteVInspection(VInspection vinspection) {
 		vinspectionMapper.deleteVInspection(vinspection);
 	}
+	
+	public String fingVInspectionById(String id) {
+		// TODO Auto-generated method stub
+		VInspection vinspection=vinspectionMapper.fingVInspectionById(id);
+		JSONObject jsonObject=JSONObject.fromObject(vinspection);
+		return jsonObject.toString();
+	}
+
+	public void updateVInspection(VInspection vinspection) {
+		vinspectionMapper.updateVInspection(vinspection);
+		
+	}
+
+	
 }

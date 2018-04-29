@@ -37,4 +37,16 @@ public interface VMaintenanceMapper {
 	 * @return
 	 */
 	public void deleteVMaintenance(VMaintenance vmaintenance);
+	
+	/**
+	 * 根据Id查询维修信息
+	 * @param id 
+	 * @return 维修信息
+	 */
+	public VMaintenance fingVMaintenanceById(String id);
+	/**
+	 * 根据id修改用户信息
+	 * @param vmaintenance 维修信息
+	 */
+	public void updateVMaintenance(VMaintenance vmaintenance);
 }

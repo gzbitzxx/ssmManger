@@ -19,9 +19,29 @@
 		</selectKey>
 		INSERT INTO
 		driver (id,number,name,denger,age,idcard,address,phonenumber,drivercardid,driving,starttime,endtime)
-		VALUES (#{id},#{number},#{name},#{denger},#{age},#{address},#{phonenumber},#{drivercardid},#{driving},#{starttime},#{endtime})
+		VALUES (#{id},#{number},#{name},#{denger},#{age},${idcard},#{address},#{phonenumber},#{drivercardid},#{driving},#{starttime},#{endtime})
 	</insert>
 	<delete id="deleteDriver" parameterType="com.zyp.pojo.Driver">
 		DELETE FROM driver WHERE id=#{id}
 	</delete>
+	
+	<select id="fingDriverById" parameterType="string" resultType="com.zyp.pojo.Driver">
+	select * from driver where id=#{id}
+	</select>
+	
+	<update id="updateDriver" parameterType="com.zyp.pojo.Driver">
+	UPDATE driver set
+	number=#{number},
+	name=#{name},
+	denger=#{denger},
+	age=#{age},
+	idcard=#{idcard},
+	address=#{address},
+	phonenumber=#{phonenumber},
+	drivercardid=#{drivercardid},
+	driving=#{driving},
+	starttime=#{starttime},
+	endtime=#{endtime}
+	where id=#{id}
+	</update>
 </mapper>

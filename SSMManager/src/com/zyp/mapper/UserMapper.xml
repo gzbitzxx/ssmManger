@@ -26,9 +26,11 @@
 	<delete id="deleteUser" parameterType="com.zyp.pojo.User">
 		DELETE FROM `user` WHERE id=#{id}
 	</delete>
+	
 	<select id="fingUserById" parameterType="string" resultType="com.zyp.pojo.User">
 	select * from user where id=#{id}
 	</select>
+	
 	<update id="updateUser" parameterType="com.zyp.pojo.User">
 	UPDATE `user` set
 	number=#{number},

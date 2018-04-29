@@ -64,9 +64,22 @@ public class OilController {
 	@RequestMapping("/detele")
 	@ResponseBody
 	public String delete(Oil oil){
-		System.out.println("-----------------------------------------------------");
-		System.out.println(oil.getId());
 		oilService.deleteOil(oil);
 		return "ok";
 	}
+	 //通过id获取油量数据
+	@RequestMapping("/findOilById")
+	@ResponseBody
+	public String findOilById(String id) {
+		return oilService.fingOilById(id);
+	}
+	
+	 //通过油量数据跟新数据库
+	@RequestMapping("/update")
+	@ResponseBody
+	public String updateOil(Oil oil) {
+	oilService.updateOil(oil);
+		return "";
+	}
+	
 }

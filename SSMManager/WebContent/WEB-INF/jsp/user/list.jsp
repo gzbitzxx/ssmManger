@@ -242,12 +242,15 @@
 				success : function(data) {
 					$("#myModal").modal('hide');
 					layer.msg(msg);
+					 $("#id").val("");
+					 document.getElementById("data").reset();
 					RefreshGridManagerList("");
 				}
 			});
 			});
 		});
 
+		//删除
 		function deleteInfo(ob) {
 			layui.use('layer', function() {
 				layer = layui.layer;
@@ -276,6 +279,8 @@
 			})
 
 		}
+		
+		//更新信息
 		function updateInfo(id){
 			$.ajax({
 				url:'user/findUserById',

@@ -25,4 +25,21 @@
 	<delete id="deleteVMaintenance" parameterType="com.zyp.pojo.VMaintenance">
 		DELETE FROM vmaintenance WHERE id=#{id}
 	</delete>
+	
+	<select id="fingVMaintenanceById" parameterType="string" resultType="com.zyp.pojo.VMaintenance">
+	select * from vmaintenance where id=#{id}
+	</select>
+	
+	<update id="updateVMaintenance" parameterType="com.zyp.pojo.VMaintenance">
+	UPDATE vmaintenance set
+	driverid=#{driverid},
+	maintenance=#{maintenance},
+	time=#{time},
+	vnumber=#{vnumber},
+	problem=#{problem},
+	state=#{state},
+	address=#{address}
+	invoicenumber=#{invoicenumber}
+	where id=#{id}
+	</update>
 </mapper>

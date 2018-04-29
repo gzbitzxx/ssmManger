@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.zyp.mapper.VInfoMapper;
 import com.zyp.pojo.Drecord;
+import com.zyp.pojo.User;
 import com.zyp.pojo.VInfo;
 import com.zyp.service.VInfoService;
 import com.zyp.util.Pagination;
 import com.zyp.util.Util;
+
+import net.sf.json.JSONObject;
 
 public class VInfoServiceImpl implements VInfoService {
 	@Autowired
@@ -30,5 +33,19 @@ public class VInfoServiceImpl implements VInfoService {
 	public void deleteVInfo(VInfo vinfo) {
 		vinfoMapper.deleteVInfo(vinfo);
 	}
+	
+	
+	public String fingVInfoById(String id) {
+		// TODO Auto-generated method stub
+		VInfo vinfo=vinfoMapper.fingVInfoById(id);
+		JSONObject jsonObject=JSONObject.fromObject(vinfo);
+		return jsonObject.toString();
+	}
+
+	public void updateVInfo(VInfo vinfo) {
+		vinfoMapper.updateVInfo(vinfo);
+		
+	}
+
 	
 }

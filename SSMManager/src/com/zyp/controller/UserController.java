@@ -72,11 +72,14 @@ public class UserController {
 		userService.deleteUser(user);
 		return "ok";
 	}
+	//通过id获取用户数据
+
 	@RequestMapping("/findUserById")
 	@ResponseBody
 	public String findUserById(String id) {
 		return userService.fingUserById(id);
 	}
+	//通过用户数据跟新数据库
 	@RequestMapping("/update")
 	@ResponseBody
 	public String updateUser(User user) {

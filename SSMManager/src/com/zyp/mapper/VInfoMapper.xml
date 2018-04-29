@@ -25,4 +25,23 @@
 	<delete id="deleteVInfo" parameterType="com.zyp.pojo.VInfo">
 		DELETE FROM vinfo WHERE id=#{id}
 	</delete>
+	
+	<select id="fingVInfoById" parameterType="string" resultType="com.zyp.pojo.VInfo">
+	select * from vinfo where id=#{id}
+	</select>
+	
+	<update id="updateVInfo" parameterType="com.zyp.pojo.VInfo">
+	UPDATE vinfo set
+	carowner=#{carowner},
+	vlicense=#{vlicense},
+	vnumber=#{vnumber},
+	model=#{model},
+	color=#{color},
+	engine=#{engine},
+	pcapacity=#{pcapacity}
+	createtime=#{createtime},
+	displacement=#{displacement},
+	quality=#{quality}
+	where id=#{id}
+	</update>
 </mapper>

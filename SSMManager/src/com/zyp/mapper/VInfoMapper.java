@@ -37,4 +37,16 @@ public interface VInfoMapper {
 	 * @return
 	 */
 	public void deleteVInfo(VInfo vinfo);
+	
+	/**
+	 * 根据Id查询车辆信息
+	 * @param id 
+	 * @return 车辆信息
+	 */
+	public VInfo fingVInfoById(String id);
+	/**
+	 * 根据id修改车辆信息
+	 * @param vinfo 车辆信息
+	 */
+	public void updateVInfo(VInfo vinfo);
 }

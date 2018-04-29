@@ -18,5 +18,17 @@ public interface DriverService {
 	//分页获取驾驶员
 	public String driverList(Pagination pagination);
 	//删除
-		public void deleteDriver(Driver driver);
+	public void deleteDriver(Driver driver);
+	
+	/**
+	 * 根据Id查询驾驶员信息
+	 * @param id 
+	 * @return 驾驶员信息
+	 */
+	public String fingDriverById(String id);
+	/**
+	 * 根据id修改驾驶员信息
+	 * @param driver 驾驶员
+	 */
+	public void updateDriver(Driver driver);
 }

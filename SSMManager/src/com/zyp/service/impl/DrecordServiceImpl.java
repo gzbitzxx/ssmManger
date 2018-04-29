@@ -14,6 +14,8 @@ import com.zyp.service.DrecordService;
 import com.zyp.util.Pagination;
 import com.zyp.util.Util;
 
+import net.sf.json.JSONObject;
+
 public class DrecordServiceImpl implements DrecordService {
 	@Autowired
 	@Qualifier("drecordMapper")
@@ -38,6 +40,17 @@ public class DrecordServiceImpl implements DrecordService {
 	public void deleteDrecord(Drecord drecord) {
 		drecordMapper.deletedrecord(drecord);
 	}
+	
+	public String fingDrecordById(String id) {
+		// TODO Auto-generated method stub
+		Drecord drecord=drecordMapper.fingDrecordById(id);
+		JSONObject jsonObject=JSONObject.fromObject(drecord);
+		return jsonObject.toString();
+	}
 
+	public void updateDrecord(Drecord drecord) {
+		drecordMapper.updateDrecord(drecord);
+		
+	}
 	
 }

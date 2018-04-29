@@ -65,9 +65,22 @@ public class VInspectionController {
 	@RequestMapping("/detele")
 	@ResponseBody
 	public String delete(VInspection vinspection){
-		System.out.println("-----------------------------------------------------");
-		System.out.println(vinspection.getId());
 		vinspectionService.deleteVInspection(vinspection);
 		return "ok";
 	}
+	 //通过id获取用户数据
+	@RequestMapping("/findVInspectionById")
+	@ResponseBody
+	public String findVInspectionById(String id) {
+		return vinspectionService.fingVInspectionById(id);
+	}
+	
+	 //通过用户数据跟新数据库
+	@RequestMapping("/update")
+	@ResponseBody
+	public String updateVInspection(VInspection vinspection) {
+		vinspectionService.updateVInspection(vinspection);
+		return "";
+	}
+	
 }

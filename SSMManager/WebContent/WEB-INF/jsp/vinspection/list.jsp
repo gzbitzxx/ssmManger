@@ -175,45 +175,90 @@
 			<!-- /.modal-content -->
 		</div>
 	</div>
-	<script type="text/javascript">
+		<script type="text/javascript">
+	function RefreshGridManagerList(keyword) {
+		$(".table-div").remove();
+		$(".page-toolbar").remove();
+		$(".cls").append('<table grid-manager="demo-ajaxPageCode"></table>');
+		init(keyword);
+	}
 		$("#add").click(function() {
-			$.ajax({
-				url : "vinspection/regist",
+			layui.use('layer', function() {
+				layer = layui.layer;
+				var id=$("#id").val();
+			var url;
+			var msg;
+			var data;
+			if(id==""){
+				url="vinspection/regist";
+				msg="添加成功";
+				data=$("#data").serialize();
+			}else{
+				url="vinspection/update";
+				msg="修改成功";
+				data=$("#data").serialize()+"&id="+id;
+			}
+			
+		 $.ajax({
+				url : url,
 				type : "POST",
-				data : $("#data").serialize(),
+				data : data,
 				success : function(data) {
-					console.log(data);
+					$("#myModal").modal('hide');
+					layer.msg(msg);
+					 $("#id").val("");
+					 document.getElementById("data").reset();
+					RefreshGridManagerList("");
 				}
 			});
+			});
 		});
-		function deleteInfo(ob){
-			layer.confirm("确认要删除吗，删除后不能恢复", { title: "删除确认" }, function (index) {  
-                layer.close(index);  
-                $.post("/admin/customer/DeleteCustomer", { gid: $(e.currentTarget).data("gid") }, function (data) {  
-                    layer.alert(data, {  
-                        title: "删除操作",  
-                        btn: ['确定']  
-                    },  
-                        function (index, item) {  
-                            //layer.close(index);  
-                            location.reload();  
-                        });  
-                });  
-            });   
+
+		//删除
+		function deleteInfo(ob) {
+			layui.use('layer', function() {
+				layer = layui.layer;
+				layer.confirm("确认要删除吗，删除后不能恢复", {
+					title : "删除确认"
+				}, function(index) {
+					
+					$.ajax({
+						url : "vinspection/detele",
+						type : "POST",
+						data : {
+							'id' : ob
+						},
+						success : function(data) {
+							console.log(data);
+							if (data == 'ok') {
+								 layer.msg('删除成功');
+								 RefreshGridManagerList("");
+							}
+						}
+					}); 
+					layer.close(index);
+
+				});
+				/* */
+			})
+
+		}
+		
+		//更新信息
+		function updateInfo(id){
 			$.ajax({
-				url:"vinspection/detele",
-				type:"POST",
-				data:{'id':ob},
+				url:'vinspection/findVInspectionById',
+				data:{'id':id},
+				typr:"post",
 				success:function(data){
-					console.log(data);
-					if(data=='ok'){
-						
+					data=JSON.parse(data);
+					for(k in data){
+						$("#"+k).val(data[k]);
 					}
+					$("#myModal").modal('show');
 				}
 			});
 		}
-		
-		
 	</script>
 </body>
 </html>

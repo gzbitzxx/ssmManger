@@ -37,6 +37,17 @@ public interface DrecordMapper {
 	 * @return
 	 */
 	public void deletedrecord(Drecord drecord);
+	/**
+	 * 根据Id查询行车记录信息
+	 * @param id 
+	 * @return 行车记录信息
+	 */
+	public Drecord fingDrecordById(String id);
+	/**
+	 * 根据id修改行车记录信息
+	 * @param Drecord 行车记录信息
+	 */
+	public void updateDrecord(Drecord drecord);
 	
 }
 

@@ -37,4 +37,16 @@ public interface OilMapper {
 	 * @return
 	 */
 	public void deleteOil(Oil oil);
+	
+	/**
+	 * 根据Id查询油量信息
+	 * @param id 
+	 * @return 油量信息
+	 */
+	public Oil fingOilById(String id);
+	/**
+	 * 根据id修改油量信息
+	 * @param oil 油量信息
+	 */
+	public void updateOil(Oil oil);
 }

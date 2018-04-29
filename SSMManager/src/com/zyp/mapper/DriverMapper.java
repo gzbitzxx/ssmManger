@@ -17,7 +17,7 @@ public interface DriverMapper {
 	 * 插入驾驶员
 	 * @param user
 	 */
-	public boolean insertDriver(Driver driver);
+	public void insertDriver(Driver driver);
 	/**
 	 * 获取驾驶员列表
 	 * @param pagination 分页条件
@@ -36,6 +36,16 @@ public interface DriverMapper {
 		 * @return
 		 */
 		public void deleteDriver(Driver driver);
-	
+		/**
+		 * 根据Id查询驾驶员信息
+		 * @param id 
+		 * @return 驾驶员信息
+		 */
+		public Driver fingDriverById(String id);
+		/**
+		 * 根据id修改驾驶员信息
+		 * @param Driver 驾驶员信息
+		 */
+		public void updateDriver(Driver driver);
 	
 }
