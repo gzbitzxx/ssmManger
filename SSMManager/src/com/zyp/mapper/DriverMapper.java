@@ -2,6 +2,7 @@ package com.zyp.mapper;
 
 import java.util.List;
 
+import com.zyp.custom.SelectCustom;
 import com.zyp.pojo.Driver;
 import com.zyp.pojo.User;
 import com.zyp.util.Pagination;
@@ -47,5 +48,7 @@ public interface DriverMapper {
 		 * @param Driver 驾驶员信息
 		 */
 		public void updateDriver(Driver driver);
+		
+		public List<SelectCustom> findIDAndNumber();
 	
 }

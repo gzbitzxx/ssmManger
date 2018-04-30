@@ -1,8 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="Utf-8"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 
@@ -136,7 +135,7 @@
 				</div>
 				<form id="data">
 					<div class="modal-body">
-					<input type="hidden" id="id">
+						<input type="hidden" id="id">
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="form-group" lang="username">
@@ -154,8 +153,8 @@
 							<div class="col-lg-12">
 								<div class="form-group" lang="denger">
 									<label for="denger">性别：</label> <input type="radio"
-										 name="denger" value="false">男
-										<input   type="radio" name="denger" value="true">女
+										name="denger" value="false">男 <input type="radio"
+										name="denger" value="true">女
 								</div>
 							</div>
 							<div class="col-lg-12">
@@ -212,41 +211,42 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	function RefreshGridManagerList(keyword) {
-		$(".table-div").remove();
-		$(".page-toolbar").remove();
-		$(".cls").append('<table grid-manager="demo-ajaxPageCode"></table>');
-		init(keyword);
-	}
+		function RefreshGridManagerList(keyword) {
+			$(".table-div").remove();
+			$(".page-toolbar").remove();
+			$(".cls")
+					.append('<table grid-manager="demo-ajaxPageCode"></table>');
+			init(keyword);
+		}
 		$("#add").click(function() {
 			layui.use('layer', function() {
 				layer = layui.layer;
-				var id=$("#id").val();
-			var url;
-			var msg;
-			var data;
-			if(id==""){
-				url="user/regist";
-				msg="添加成功";
-				data=$("#data").serialize();
-			}else{
-				url="user/update";
-				msg="修改成功";
-				data=$("#data").serialize()+"&id="+id;
-			}
-			
-		 $.ajax({
-				url : url,
-				type : "POST",
-				data : data,
-				success : function(data) {
-					$("#myModal").modal('hide');
-					layer.msg(msg);
-					 $("#id").val("");
-					 document.getElementById("data").reset();
-					RefreshGridManagerList("");
+				var id = $("#id").val();
+				var url;
+				var msg;
+				var data;
+				if (id == "") {
+					url = "user/regist";
+					msg = "添加成功";
+					data = $("#data").serialize();
+				} else {
+					url = "user/update";
+					msg = "修改成功";
+					data = $("#data").serialize() + "&id=" + id;
 				}
-			});
+
+				$.ajax({
+					url : url,
+					type : "POST",
+					data : data,
+					success : function(data) {
+						$("#myModal").modal('hide');
+						layer.msg(msg);
+						$("#id").val("");
+						document.getElementById("data").reset();
+						RefreshGridManagerList("");
+					}
+				});
 			});
 		});
 
@@ -257,7 +257,7 @@
 				layer.confirm("确认要删除吗，删除后不能恢复", {
 					title : "删除确认"
 				}, function(index) {
-					
+
 					$.ajax({
 						url : "user/detele",
 						type : "POST",
@@ -265,13 +265,13 @@
 							'id' : ob
 						},
 						success : function(data) {
-							console.log(data);
 							if (data == 'ok') {
-								 layer.msg('删除成功');
-								 RefreshGridManagerList("");
+								layer.msg('删除成功');
+								RefreshGridManagerList("");
 							}
 						}
-					}); 
+					});
+					
 					layer.close(index);
 
 				});
@@ -279,17 +279,19 @@
 			})
 
 		}
-		
+
 		//更新信息
-		function updateInfo(id){
+		function updateInfo(id) {
 			$.ajax({
-				url:'user/findUserById',
-				data:{'id':id},
-				typr:"post",
-				success:function(data){
-					data=JSON.parse(data);
-					for(k in data){
-						$("#"+k).val(data[k]);
+				url : 'user/findUserById',
+				data : {
+					'id' : id
+				},
+				typr : "post",
+				success : function(data) {
+					data = JSON.parse(data);
+					for (k in data) {
+						$("#" + k).val(data[k]);
 					}
 					$("#myModal").modal('show');
 				}

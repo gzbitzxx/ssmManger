@@ -31,4 +31,10 @@ public interface DriverService {
 	 * @param driver 驾驶员
 	 */
 	public void updateDriver(Driver driver);
+	
+	/**
+	 * 获取下拉列表
+	 * @return
+	 */
+	public String findIDAndNumber();
 }

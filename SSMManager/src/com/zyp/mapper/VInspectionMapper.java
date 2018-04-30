@@ -16,7 +16,7 @@ public interface VInspectionMapper {
 	 * 插入用户
 	 * @param vinspection
 	 */
-	public boolean insertVInspection(VInspection vinspection );
+	public void insertVInspection(VInspection vinspection );
 	
 	/**
 	 * 获取年审列表

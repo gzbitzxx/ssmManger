@@ -2,6 +2,7 @@ package com.zyp.mapper;
 
 import java.util.List;
 
+import com.zyp.custom.SelectCustom;
 import com.zyp.pojo.User;
 import com.zyp.pojo.VInfo;
 import com.zyp.util.Pagination;
@@ -16,7 +17,7 @@ public interface VInfoMapper {
 	 * 插入车辆信息
 	 * @param VInfo
 	 */
-	public boolean insertVInfo(VInfo vinfo);
+	public void insertVInfo(VInfo vinfo);
 	
 	/**
 	 * 获取车辆列表
@@ -49,4 +50,9 @@ public interface VInfoMapper {
 	 * @param vinfo 车辆信息
 	 */
 	public void updateVInfo(VInfo vinfo);
+	/**
+	 * 获取车辆信息下来列表
+	 * @return
+	 */
+	public List<SelectCustom> findIDAndNumber();
 }

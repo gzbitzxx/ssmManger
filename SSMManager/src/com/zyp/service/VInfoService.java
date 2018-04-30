@@ -1,4 +1,7 @@
 package com.zyp.service;
+import java.util.List;
+
+import com.zyp.custom.SelectCustom;
 import com.zyp.pojo.User;
 import com.zyp.pojo.VInfo;
 import com.zyp.util.Pagination;
@@ -29,4 +32,9 @@ public interface VInfoService {
 	 * @param vinfo 车辆信息
 	 */
 	public void updateVInfo(VInfo vinfo);
+	/**
+	 * 获取车辆信息下来列表
+	 * @return
+	 */
+	public String findIDAndNumber();
 }

@@ -16,7 +16,7 @@ public interface OilMapper {
 	 * 插入用户
 	 * @param vinspection
 	 */
-	public boolean insertOil(Oil oil );
+	public void insertOil(Oil oil );
 	
 	/**
 	 * 获取油量列表

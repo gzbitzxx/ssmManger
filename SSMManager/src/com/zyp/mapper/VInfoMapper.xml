@@ -38,10 +38,13 @@
 	model=#{model},
 	color=#{color},
 	engine=#{engine},
-	pcapacity=#{pcapacity}
+	pcapacity=#{pcapacity},
 	createtime=#{createtime},
 	displacement=#{displacement},
 	quality=#{quality}
 	where id=#{id}
 	</update>
+	<select id="findIDAndNumber" resultType="com.zyp.custom.SelectCustom" >
+	SELECT id value,vnumber name FROM vinfo
+	</select>
 </mapper>

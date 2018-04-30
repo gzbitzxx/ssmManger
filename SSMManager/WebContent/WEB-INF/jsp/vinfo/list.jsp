@@ -17,11 +17,13 @@
 <link href="resource/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet"
 	href="resource/plugins/grid_manager/GridManager.min.css">
+<link rel="stylesheet" href="resource/layui/css/layui.css">
 <script src="resource/js/jquery.min.js"></script>
 <script src="resource/js/bootstrap.min.js"></script>
 <script src="resource/js/common.js"></script>
 <script type="text/javascript"
 	src="resource/plugins/grid_manager/GridManager.min.js"></script>
+	<script type="text/javascript" src="resource/layui/layui.js"></script>
 <script type="text/javascript">
 	$(function() {
 		init();
@@ -70,13 +72,18 @@
 				key : 'quality',
 				text : '总质量'
 			},{
-			    key: 'action',
-			    remind: 'the action',
-			    width: '100px',
-			    text: '操作',
-			    template: function(action, rowObject){
-				    return '<a style="color:#337ab7;" href="javascript:;" onclick="deleteInfo(\''+rowObject.id+'\')">编辑</a>';
-			    }
+				key : 'action',
+				remind : 'the action',
+				width : '100px',
+				text : '操作',
+				template : function(action, rowObject) {
+					return '<a style="color:#337ab7;" href="javascript:;" onclick="deleteInfo(\''
+							+ rowObject.id
+							+ '\')">删除</a>'
+							+ "| "
+							+ '<a style="color:#337ab7;" href="javascript:;" onclick="updateInfo(\''
+							+ rowObject.id + '\')">编辑</a>';
+				}
 	        }]
 	        
 		});
@@ -108,6 +115,7 @@
 		</div>
 	</div>
 	<div style="clear: both;"></div>
+	<div class="cls"></div>
 	<table grid-manager="demo-ajaxPageCode"></table>
 	<!-- 添加、修改框 -->
 	<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
@@ -122,6 +130,7 @@
 				</div>
 				<form id="data">
 					<div class="modal-body">
+					<input type="hidden" id="id">
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="form-group" lang="carowner">
@@ -175,7 +184,7 @@
 							<div class="col-lg-12">
 								<div class="form-group" lang="createtime">
 									<label for="createtime">制造日期：</label> <input
-										type="text" class="form-control" name="createtime" id="createtime"
+										type="date" class="form-control" name="createtime" id="createtime"
 										placeholder="制造日期">
 								</div>
 								<div class="col-lg-12">
@@ -215,6 +224,7 @@
 			var url;
 			var msg;
 			var data;
+			console.log(id);
 			if(id==""){
 				url="vinfo/regist";
 				msg="添加成功";

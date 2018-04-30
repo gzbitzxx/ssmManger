@@ -38,7 +38,7 @@
 	vnumber=#{vnumber},
 	problem=#{problem},
 	state=#{state},
-	address=#{address}
+	address=#{address},
 	invoicenumber=#{invoicenumber}
 	where id=#{id}
 	</update>

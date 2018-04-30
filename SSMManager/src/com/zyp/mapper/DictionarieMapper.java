@@ -2,8 +2,8 @@ package com.zyp.mapper;
 
 import java.util.List;
 
+import com.zyp.custom.SelectCustom;
 import com.zyp.pojo.Dictionarie;
-import com.zyp.pojo.User;
 import com.zyp.util.Pagination;
 
 /***
@@ -16,7 +16,7 @@ public interface DictionarieMapper {
 	 * 插入字典
 	 * @param dictionarie
 	 */
-	public boolean insertDictionarie(Dictionarie dictionarie );
+	public void insertDictionarie(Dictionarie dictionarie );
 	
 	/**
 	 * 获取字典列表
@@ -37,5 +37,13 @@ public interface DictionarieMapper {
 	 * @return
 	 */
 	public void deleteDictionarie(Dictionarie dictionarie);
+	
+	/**
+	 * 获取下拉信息
+	 * @return
+	 */
+	public List<SelectCustom> findIDAndNumber();
+	
+	public Dictionarie fingUserById(String id);
 }
 

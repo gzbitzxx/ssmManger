@@ -37,7 +37,7 @@
 	carefutime=#{carefutime},
 	pretime=#{pretime},
 	userid=#{userid},
-	desc=#{desc},
+	desc=#{desc}
 	where id=#{id}
 	</update>
 </mapper>

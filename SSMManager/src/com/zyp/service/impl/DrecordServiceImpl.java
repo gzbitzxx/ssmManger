@@ -34,7 +34,7 @@ public class DrecordServiceImpl implements DrecordService {
 	}
 
 	public void addDrecord(Drecord drecord) {
-		// TODO Auto-generated method stub
+		drecordMapper.insertDrecord(drecord);
 		
 	}
 	public void deleteDrecord(Drecord drecord) {

@@ -37,7 +37,7 @@
 	nowtime=#{nowtime},
 	preaoil=#{preaoil},
 	oil=#{oil},
-	oiltype=#{oiltype},
+	oiltype=#{oiltype}
 	where id=#{id}
 	</update>
 </mapper>

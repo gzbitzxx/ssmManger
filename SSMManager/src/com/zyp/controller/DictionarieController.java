@@ -54,6 +54,7 @@ public class DictionarieController {
 		dictionarieService.addDictionarie(dictionarie);
 		return "ok";
 	}
+	
 	/**
 	 * 删除
 	 * @param id
@@ -62,9 +63,20 @@ public class DictionarieController {
 	@RequestMapping("/detele")
 	@ResponseBody
 	public String delete(Dictionarie dictionarie){
-		System.out.println("-----------------------------------------------------");
-		System.out.println(dictionarie.getId());
 		dictionarieService.deleteDictionarie(dictionarie);
 		return "ok";
 	}
+	
+	@RequestMapping("/findDictionarieById")
+	@ResponseBody
+	public String findUserById(String id) {
+		return dictionarieService.findDictionarieByID(id);
+	}
+	
+	@RequestMapping("/findIDAndNumberDictionarie")
+	@ResponseBody
+	public String findIDAndNumberdriver() {
+		return dictionarieService.findIDAndNumber();
+	}
+	
 }

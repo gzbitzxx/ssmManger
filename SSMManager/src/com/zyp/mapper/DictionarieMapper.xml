@@ -25,4 +25,12 @@
 	<delete id="deleteDictionarie" parameterType="com.zyp.pojo.Dictionarie">
 		DELETE FROM dictionarie WHERE id=#{id}
 	</delete>
+	
+	<select id="findIDAndNumber" resultType="com.zyp.custom.SelectCustom" >
+		SELECT id value,name name FROM dictionarie
+	</select>
+	
+	<select id="fingUserById" parameterType="string" resultType="com.zyp.pojo.Dictionarie">
+	select * from dictionarie where id=#{id}
+	</select>
 </mapper>

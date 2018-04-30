@@ -44,4 +44,7 @@
 	endtime=#{endtime}
 	where id=#{id}
 	</update>
+	<select id="findIDAndNumber" resultType="com.zyp.custom.SelectCustom">
+	SELECT id value,name name FROM driver
+</select>
 </mapper>

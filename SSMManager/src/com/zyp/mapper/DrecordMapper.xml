@@ -39,8 +39,8 @@
 	endmileage=#{endmileage},
 	origin=#{origin},
 	destination=#{destination},
-	starttime=#{starttime}
-	endtime=#{endtime},
+	starttime=#{starttime},
+	endtime=#{endtime}
 	where id=#{id}
 	</update>
 	

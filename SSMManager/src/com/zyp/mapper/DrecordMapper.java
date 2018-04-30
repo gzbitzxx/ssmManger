@@ -1,6 +1,8 @@
 package com.zyp.mapper;
 
 import java.util.List;
+
+import com.zyp.custom.SelectCustom;
 import com.zyp.pojo.Drecord;
 import com.zyp.pojo.User;
 import com.zyp.util.Pagination;
@@ -15,7 +17,7 @@ public interface DrecordMapper {
 	 * 插入行车记录
 	 * @param Drecord
 	 */
-	public boolean insertDrecord(Drecord drecord);
+	public void insertDrecord(Drecord drecord);
 	
 	/**
 	 * 获取行车记录列表
@@ -49,5 +51,10 @@ public interface DrecordMapper {
 	 */
 	public void updateDrecord(Drecord drecord);
 	
+	/**
+	 * 获取下拉信息
+	 * @return list列表
+	 */
+	public List<SelectCustom> findIDAndNumber();
 }
 

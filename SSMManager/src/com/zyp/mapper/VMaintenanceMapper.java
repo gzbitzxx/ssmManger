@@ -16,7 +16,7 @@ public interface VMaintenanceMapper {
 	 * 插入维修记录
 	 * @param vmaintenance
 	 */
-	public boolean insertVMaintenance(VMaintenance vmaintenance);
+	public void insertVMaintenance(VMaintenance vmaintenance);
 	
 	/**
 	 * 获取记录列表
