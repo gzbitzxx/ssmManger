@@ -2,6 +2,7 @@ package com.zyp.mapper;
 
 import java.util.List;
 
+import com.zyp.custom.SelectCustom;
 import com.zyp.pojo.User;
 import com.zyp.util.Pagination;
 
@@ -48,4 +49,6 @@ public interface UserMapper {
 	 * @param user 用户信息
 	 */
 	public void updateUser(User user);
+	
+	public List<SelectCustom> findIDAndNumber();
 }

@@ -30,47 +30,57 @@
 	function init() {
 		var table = document
 				.querySelector('table[grid-manager="demo-ajaxPageCode"]');
-		table.GM({
-			ajax_url : 'vinspection/list',
-			ajax_type : 'POST',
-			query : {
-				pluginId : 1,
-				'keyword' : '123'
-			},
-			supportAjaxPage : true,
-			supportCheckbox : false,
-			columnData : [ {
-				key : 'Ytype',
-				text : '年审类型'
-			}, {
-				key : 'vnumber',
-				text : '车辆编号'
-			}, {
-				key : 'carefutime',
-				text : '年审时间'
-			}, {
-				key : 'pretime',
-				text : '上次年审时间'
-			}, {
-				key : 'userid',
-				text : '用户编号'
-			}, {
-				key : 'state',
-				text : '年审状态'
-			}, {
-				key : 'desc',
-				text : '描述'
-			},{
-			    key: 'action',
-			    remind: 'the action',
-			    width: '100px',
-			    text: '操作',
-			    template: function(action, rowObject){
-				    return '<a style="color:#337ab7;" href="javascript:;" onclick="deleteInfo(\''+rowObject.id+'\')">编辑</a>';
-			    }
-	        }]
-	        
-		});
+		table
+				.GM({
+					ajax_url : 'vinspection/list',
+					ajax_type : 'POST',
+					query : {
+						pluginId : 1,
+						'keyword' : '123'
+					},
+					supportAjaxPage : true,
+					supportCheckbox : false,
+					columnData : [
+							{
+								key : 'Ytype',
+								text : '年审类型'
+							},
+							{
+								key : 'vnumber',
+								text : '车辆编号'
+							},
+							{
+								key : 'carefutime',
+								text : '年审时间'
+							},
+							{
+								key : 'pretime',
+								text : '上次年审时间'
+							},
+							{
+								key : 'userid',
+								text : '用户编号'
+							},
+							{
+								key : 'state',
+								text : '年审状态'
+							},
+							{
+								key : 'desc',
+								text : '描述'
+							},
+							{
+								key : 'action',
+								remind : 'the action',
+								width : '100px',
+								text : '操作',
+								template : function(action, rowObject) {
+									return '<a style="color:#337ab7;" href="javascript:;" onclick="deleteInfo(\''
+											+ rowObject.id + '\')">编辑</a>';
+								}
+							} ]
+
+				});
 	}
 </script>
 </head>
@@ -112,20 +122,27 @@
 					<h4 class="modal-title">添加年审</h4>
 				</div>
 				<form id="data">
+					<input type="hidden" id="id">
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="form-group" lang="Ytype">
-									<label for="Ytype">年审类型：</label> <input type="text"
-										class="form-control" name="Ytype" id="Ytype"
-										placeholder="年审类型">
+									<label for="Ytype">年审类型：</label> <select name="Ytype"
+										id="Ytype" class="selectpicker form-control"
+										data-live-search="true">
+										<option value="">请选择</option>
+										<option value="一年一审">一年一审</option>
+										<option value="二年二审">二年二审</option>
+									</select>
 								</div>
 							</div>
 							<div class="col-lg-12">
 								<div class="form-group" lang="vnumber">
-									<label for="vnumber">车辆编号：</label> <input type="text"
-										class="form-control" name="vnumber" id="vnumber"
-										placeholder="车辆编号">
+									<label for="vnumber">车辆牌号：</label> <select name="vnumber"
+										id="vnumber" class="selectpicker form-control"
+										data-live-search="true">
+										<option value="">请选择</option>
+									</select>
 								</div>
 							</div>
 							<div class="col-lg-12">
@@ -144,9 +161,11 @@
 							</div>
 							<div class="col-lg-12">
 								<div class="form-group" lang="userid">
-									<label for="userid">用户编号：</label> <input type="text"
-										class="form-control" name="userid" id="userid"
-										placeholder="用户编号">
+									<label for="userid">用户名称：</label> <select name="userid"
+										id="userid" class="selectpicker form-control"
+										data-live-search="true">
+										<option value="">请选择</option>
+									</select>
 								</div>
 							</div>
 							<div class="col-lg-12">
@@ -158,59 +177,66 @@
 							</div>
 							<div class="col-lg-12">
 								<div class="form-group" lang="desc">
-									<label for="desc">描述：</label> <input
-										type="text" class="form-control" name="desc"
-										id="desc" placeholder="描述">
+									<label for="desc">描述：</label> <input type="text"
+										class="form-control" name="desc" id="desc" placeholder="描述">
 								</div>
 							</div>
-							
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">关闭</button>
-								<button type="button" class="btn btn-primary" id="add">保存</button>
-							</div>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary" id="add">保存</button>
+						</div>
 				</form>
 			</div>
 			<!-- /.modal-content -->
 		</div>
 	</div>
-		<script type="text/javascript">
-	function RefreshGridManagerList(keyword) {
-		$(".table-div").remove();
-		$(".page-toolbar").remove();
-		$(".cls").append('<table grid-manager="demo-ajaxPageCode"></table>');
-		init(keyword);
-	}
+	<script type="text/javascript">
+	
+		//初始化select
+		$(function(){
+			SelectInfo("vinspection/findIDAndNumberVinfo", "#vnumber");
+			SelectInfo("vinspection/findIDAndNumberUserId", "#userid");
+		});
+		
+		function RefreshGridManagerList(keyword) {
+			$(".table-div").remove();
+			$(".page-toolbar").remove();
+			$(".cls")
+					.append('<table grid-manager="demo-ajaxPageCode"></table>');
+			init(keyword);
+		}
 		$("#add").click(function() {
 			layui.use('layer', function() {
 				layer = layui.layer;
-				var id=$("#id").val();
-			var url;
-			var msg;
-			var data;
-			if(id==""){
-				url="vinspection/regist";
-				msg="添加成功";
-				data=$("#data").serialize();
-			}else{
-				url="vinspection/update";
-				msg="修改成功";
-				data=$("#data").serialize()+"&id="+id;
-			}
-			
-		 $.ajax({
-				url : url,
-				type : "POST",
-				data : data,
-				success : function(data) {
-					$("#myModal").modal('hide');
-					layer.msg(msg);
-					 $("#id").val("");
-					 document.getElementById("data").reset();
-					RefreshGridManagerList("");
+				var id = $("#id").val();
+				var url;
+				var msg;
+				var data;
+				if (id == "") {
+					url = "vinspection/regist";
+					msg = "添加成功";
+					data = $("#data").serialize();
+				} else {
+					url = "vinspection/update";
+					msg = "修改成功";
+					data = $("#data").serialize() + "&id=" + id;
 				}
-			});
+
+				$.ajax({
+					url : url,
+					type : "POST",
+					data : data,
+					success : function(data) {
+						$("#myModal").modal('hide');
+						layer.msg(msg);
+						$("#id").val("");
+						document.getElementById("data").reset();
+						RefreshGridManagerList("");
+					}
+				});
 			});
 		});
 
@@ -221,7 +247,7 @@
 				layer.confirm("确认要删除吗，删除后不能恢复", {
 					title : "删除确认"
 				}, function(index) {
-					
+
 					$.ajax({
 						url : "vinspection/detele",
 						type : "POST",
@@ -231,11 +257,11 @@
 						success : function(data) {
 							console.log(data);
 							if (data == 'ok') {
-								 layer.msg('删除成功');
-								 RefreshGridManagerList("");
+								layer.msg('删除成功');
+								RefreshGridManagerList("");
 							}
 						}
-					}); 
+					});
 					layer.close(index);
 
 				});
@@ -243,17 +269,19 @@
 			})
 
 		}
-		
+
 		//更新信息
-		function updateInfo(id){
+		function updateInfo(id) {
 			$.ajax({
-				url:'vinspection/findVInspectionById',
-				data:{'id':id},
-				typr:"post",
-				success:function(data){
-					data=JSON.parse(data);
-					for(k in data){
-						$("#"+k).val(data[k]);
+				url : 'vinspection/findVInspectionById',
+				data : {
+					'id' : id
+				},
+				typr : "post",
+				success : function(data) {
+					data = JSON.parse(data);
+					for (k in data) {
+						$("#" + k).val(data[k]);
 					}
 					$("#myModal").modal('show');
 				}

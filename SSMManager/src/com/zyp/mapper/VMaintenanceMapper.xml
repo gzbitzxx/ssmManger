@@ -5,7 +5,7 @@
 	<select id="vmaintenanceList" parameterType="com.zyp.util.Pagination"
 		resultType="vmaintenance">
 		SELECT
-		id,driverid,maintenance time,vnumber,problem,state,address,invoicenumber
+		id,driverid,maintenancetime,vnumber,problem,state,address,invoicenumber
 		from vmaintenance LIMIT #{skipNum},#{takeNum}
 	</select>
 	
@@ -19,8 +19,8 @@
 			select replace(uuid(),'-','') from dual
 		</selectKey>
 		INSERT INTO
-		vmaintenance (id,driverid,maintenance time,vnumber,problem,state,address,invoicenumber)
-		VALUES(#{id},#{driverid},#{maintenance},#{time},#{vnumber},#{problem},#{state},#{address},#{invoicenumber})
+		vmaintenance (id,driverid,maintenancetime,vnumber,problem,state,address,invoicenumber)
+		VALUES(#{id},#{driverid},#{maintenancetime},#{vnumber},#{problem},#{state},#{address},#{invoicenumber})
 	</insert>
 	<delete id="deleteVMaintenance" parameterType="com.zyp.pojo.VMaintenance">
 		DELETE FROM vmaintenance WHERE id=#{id}
@@ -33,8 +33,7 @@
 	<update id="updateVMaintenance" parameterType="com.zyp.pojo.VMaintenance">
 	UPDATE vmaintenance set
 	driverid=#{driverid},
-	maintenance=#{maintenance},
-	time=#{time},
+	maintenance=#{maintenancetime},
 	vnumber=#{vnumber},
 	problem=#{problem},
 	state=#{state},

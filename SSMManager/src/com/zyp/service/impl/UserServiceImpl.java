@@ -2,12 +2,14 @@ package com.zyp.service.impl;
 
 import java.util.List;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.zyp.custom.SelectCustom;
 import com.zyp.mapper.UserMapper;
 import com.zyp.pojo.User;
 import com.zyp.service.UserService;
@@ -45,6 +47,12 @@ public class UserServiceImpl implements UserService {
 	public void updateUser(User user) {
 		userMapper.updateUser(user);
 		
+	}
+
+	public String findIDAndNumber() {
+		List<SelectCustom> list=userMapper.findIDAndNumber();
+		String data=JSONArray.fromObject(list).toString();
+		return data;
 	}
 
 	

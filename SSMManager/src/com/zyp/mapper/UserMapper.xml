@@ -42,4 +42,8 @@
 	phonenumber=#{phonenumber}
 	where id=#{id}
 	</update>
+	
+	<select id="findIDAndNumber" resultType="com.zyp.custom.SelectCustom" >
+	SELECT id value,`name` name FROM `user`
+	</select>
 </mapper>

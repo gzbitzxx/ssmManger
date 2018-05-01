@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zyp.pojo.User;
 import com.zyp.pojo.VInspection;
+import com.zyp.service.UserService;
+import com.zyp.service.VInfoService;
 import com.zyp.service.VInspectionService;
 import com.zyp.util.CreateNumber;
 import com.zyp.util.Pagination;
@@ -30,6 +32,12 @@ import com.zyp.util.SecurityUtil;
 public class VInspectionController {
 	@Autowired
 	private VInspectionService vinspectionService;
+	
+	@Autowired
+	private VInfoService vinfoService;
+	
+	@Autowired
+	private UserService userService;
 
 	/**
 	 * 返回年审数据
@@ -102,5 +110,16 @@ public class VInspectionController {
 	        binder.registerCustomEditor(Date.class, null, new CustomDateEditor(
 	                dateFormat, true));
 	    }
-	
+		
+		@RequestMapping("/findIDAndNumberVinfo")
+		@ResponseBody
+		public String findIDAndNumberVinfo() {
+			return vinfoService.findIDAndNumber();
+		}
+		
+		@RequestMapping("/findIDAndNumberUserId")
+		@ResponseBody
+		public String findIDAndNumberUser() {
+			return userService.findIDAndNumber();
+		}
 }

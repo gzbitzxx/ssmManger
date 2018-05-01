@@ -4,9 +4,7 @@
 <mapper namespace="com.zyp.mapper.VInspectionMapper">
 	<select id="vinspectionList" parameterType="com.zyp.util.Pagination"
 		resultType="vinspection">
-		SELECT
-		id,ytype,vnumber,carefutime,pretime,userid,desc
-		from vinspection LIMIT #{skipNum},#{takeNum}
+		SELECT id,Ytype,vnumber,carefutime,pretime,userid,state,`desc` from vinspection LIMIT #{skipNum},#{takeNum}
 	</select>
 	
 	<select id="vinspectionCount" parameterType="com.zyp.util.Pagination"

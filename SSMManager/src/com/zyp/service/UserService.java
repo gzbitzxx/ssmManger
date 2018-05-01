@@ -10,7 +10,7 @@ import com.zyp.util.Pagination;
  * @author zyp
  * 定义操作用户的接口
  */
-public interface UserService {
+public interface UserService extends ICommonServer {
 	
 	//添加用户
 	public void addUser(User user);
@@ -31,4 +31,5 @@ public interface UserService {
 	 * @param user 用户信息
 	 */
 	public void updateUser(User user);
+	
 }

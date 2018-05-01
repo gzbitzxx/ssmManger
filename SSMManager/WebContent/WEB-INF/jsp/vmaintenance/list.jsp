@@ -114,18 +114,25 @@
 				<form id="data">
 					<div class="modal-body">
 						<div class="row">
+							<input name="id" id="id" type="hidden">
 							<div class="col-lg-12">
 								<div class="form-group" lang="driverid">
-									<label for="driverid">驾驶员编号：</label> <input type="text"
-										class="form-control" name="driverid" id="driverid"
-										placeholder="驾驶员编号">
+									<label for="driverid">驾驶员编号：</label> 
+										<select name="driverid"
+										id="driverid" class="selectpicker form-control"
+										data-live-search="true">
+										<option value="">请选择</option>
+									</select>
 								</div>
 							</div>
 							<div class="col-lg-12">
 								<div class="form-group" lang="vnumber">
-									<label for="vnumber">车辆编号：</label> <input type="text"
-										class="form-control" name="vnumber" id="vnumber"
-										placeholder="车辆编号">
+									<label for="vnumber">车辆编号：</label>
+										<select name="vnumber"
+										id="vnumber" class="selectpicker form-control"
+										data-live-search="true">
+										<option value="">请选择</option>
+									</select>
 								</div>
 							</div>
 							<div class="col-lg-12">
@@ -176,6 +183,12 @@
 		</div>
 	</div>
 		<script type="text/javascript">
+		
+		$(function(){
+			SelectInfo("vmaintenance/findIDAndNumberVinfo", "#vnumber");
+			SelectInfo("vmaintenance/findIDAndNumberDriver", "#driverid");
+		});
+		
 	function RefreshGridManagerList(keyword) {
 		$(".table-div").remove();
 		$(".page-toolbar").remove();
